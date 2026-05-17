@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>구매 내역</title>
+</head>
+<body>
+    <h1>구매 내역</h1>
+
+    <a href="/buy/">로또 구매하기</a>
+
+    <hr>
+
+    {% for ticket in tickets %}
+        <p>
+            이름: {{ ticket.name }} |
+            번호: {{ ticket.numbers }} |
+            방식: {{ ticket.get_mode_display }} |
+            회차: {{ ticket.round_number }}
+        </p>
+    {% empty %}
+        <p>아직 구매한 복권이 없습니다.</p>
+    {% endfor %}
+</body>
+</html>

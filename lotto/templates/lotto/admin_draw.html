@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 추첨</title>
+</head>
+<body>
+    <h1>관리자 추첨 페이지</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">새 회차 추첨하기</button>
+    </form>
+
+    <hr>
+
+    {% if message %}
+        <h2>{{ message }}</h2>
+        <p>당첨 번호: {{ draw.winning_numbers }}</p>
+    {% endif %}
+
+    <a href="/admin/">관리자 페이지로 이동</a> |
+    <a href="/tickets/">판매 내역 보기</a>
+</body>
+</html>

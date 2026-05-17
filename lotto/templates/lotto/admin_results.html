@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 당첨 내역</title>
+</head>
+<body>
+    <h1>관리자 당첨 내역</h1>
+
+    <a href="/admin-draw/">추첨하기</a> |
+    <a href="/admin/">Django 관리자 페이지</a>
+
+    <hr>
+
+    {% for result in results %}
+        <p>
+            구매자: {{ result.ticket.name }} <br>
+            구매 번호: {{ result.ticket.numbers }} <br>
+            회차: {{ result.ticket.round_number }} <br>
+            당첨 번호: {{ result.winning_numbers }} <br>
+            맞은 개수: {{ result.match_count }} <br>
+            결과: {{ result.rank }}
+        </p>
+        <hr>
+    {% empty %}
+        <p>아직 구매 내역이 없습니다.</p>
+    {% endfor %}
+</body>
+</html>

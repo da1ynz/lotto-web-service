@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>당첨 확인</title>
+</head>
+<body>
+    <h1>당첨 확인</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            이름:
+            <input type="text" name="name" required>
+        </p>
+        <button type="submit">확인하기</button>
+    </form>
+
+    <hr>
+
+    {% for result in results %}
+        <p>
+            이름: {{ result.ticket.name }} <br>
+            내 번호: {{ result.ticket.numbers }} <br>
+            당첨 번호: {{ result.winning_numbers }} <br>
+            맞은 개수: {{ result.match_count }} <br>
+            결과: {{ result.rank }}
+        </p>
+        <hr>
+    {% empty %}
+        <p>이름을 입력하면 당첨 결과가 표시됩니다.</p>
+    {% endfor %}
+
+    <a href="/buy/">로또 구매하기</a> |
+    <a href="/tickets/">구매 내역 보기</a>
+</body>
+</html>

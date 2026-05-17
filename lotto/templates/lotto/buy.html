@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로또 구매</title>
+</head>
+<body>
+    <h1>6/45 로또 구매</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p>
+            이름:
+            <input type="text" name="name" required>
+        </p>
+
+        <p>
+            구매 방식:
+            <select name="mode">
+                <option value="AUTO">자동</option>
+                <option value="MANUAL">수동</option>
+            </select>
+        </p>
+
+        <h3>수동 번호 입력</h3>
+        <p>자동을 선택하면 아래 번호는 무시됩니다.</p>
+
+        <input type="number" name="num1" min="1" max="45">
+        <input type="number" name="num2" min="1" max="45">
+        <input type="number" name="num3" min="1" max="45">
+        <input type="number" name="num4" min="1" max="45">
+        <input type="number" name="num5" min="1" max="45">
+        <input type="number" name="num6" min="1" max="45">
+
+        <br><br>
+        <button type="submit">구매하기</button>
+    </form>
+
+    <br>
+    <a href="/tickets/">구매 내역 보기</a>
+    <a href="/check/">당첨 확인하기</a>
+</body>
+</html>
